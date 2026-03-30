@@ -1,4 +1,5 @@
-/* 1. RESET & NỀN (Giữ nguyên vì đã tối ưu) */
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +7,7 @@
 }
 
 body {
-  font-family: "Quicksand", sans-serif;
+  font-family: "Montserrat", sans-serif;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
@@ -26,7 +27,7 @@ body {
   }
 }
 
-/* 2. NAVBAR (Glassmorphism) */
+/* NAVBAR */
 nav {
   display: flex;
   justify-content: space-between;
@@ -37,7 +38,6 @@ nav {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -57,19 +57,8 @@ nav a {
   position: relative;
 }
 
-nav a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background-color: white;
-  transition: 0.3s;
-}
-
-nav a:hover::after {
-  width: 100%;
+nav a:hover {
+  opacity: 0.8;
 }
 
 nav button {
@@ -88,150 +77,200 @@ nav button:hover {
   transform: scale(1.05);
 }
 
-/* 3. TRANG CHỦ & BÀI VIẾT */
+/* HOME PAGE */
 .homePage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 60px 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+
+  column-count: 3;
+  column-gap: 30px;
+}
+@media (max-width: 900px) {
+  .homePage {
+    column-count: 2;
+  }
+}
+@media (max-width: 768px) {
+  .homePage {
+    column-count: 1;
+  }
 }
 
 .pageTitle {
-  margin-bottom: 50px;
-  color: white;
   font-family: "Playfair Display", serif;
-  font-size: 3rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-size: 80px;
+  font-weight: 900;
+  font-style: italic;
+  text-align: center;
+  margin: 60px 0;
+  letter-spacing: -1px;
+
+  background: linear-gradient(to right, #ffffff 20%, #ffd1e3 50%, #d1f7ff 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1))
+    drop-shadow(0 0 15px rgba(231, 60, 126, 0.2));
+
+  display: block;
+  width: 100%;
+  transition: all 0.5s ease;
+}
+
+.pageTitle:hover {
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.6))
+    drop-shadow(0 0 10px rgba(35, 166, 213, 0.4));
+  transform: scale(1.03) translateY(-5px);
 }
 
 .post {
-  width: 100%;
-  max-width: 700px;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  margin-bottom: 40px;
-  padding: 35px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  animation: fadeIn 0.5s ease forwards;
-  transition: 0.4s;
-}
+  break-inside: avoid;
+  page-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  margin-bottom: 30px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  transition: transform 0.3s ease;
 }
 
 .post:hover {
-  transform: translateY(-10px) scale(1.01);
-  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-5px);
 }
 
-/* Gộp Post Header */
 .postHeader {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 15px;
+  gap: 15px;
+  width: 100%;
+}
+
+.postHeader .title {
+  flex: 1;
+  min-width: 0;
 }
 
 .postHeader h2 {
   font-family: "Playfair Display", serif;
-  font-size: 28px;
-}
+  font-style: italic;
+  font-size: 30px;
+  font-weight: 800;
+  color: #1a1a1a;
 
-.deleteBtn {
-  background: transparent;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  opacity: 0.5;
-  transition: 0.3s;
-}
-
-.deleteBtn:hover {
-  transform: scale(1.2);
-  opacity: 1;
-  color: #ff4757;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  margin: 0;
 }
 
 .postTextContainer {
-  font-size: 17px;
-  line-height: 1.8;
-  color: #444;
+  width: 100%;
+  font-family: "Lora", serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+  flex-grow: 1;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
   white-space: pre-wrap;
-  margin-bottom: 25px;
 }
 
 .postFooter {
   display: flex;
-  justify-content: flex-end;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
   padding-top: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .postAuthor {
-  font-weight: bold;
+  font-style: italic;
+  font-weight: 600;
   color: #e73c7e;
-  font-size: 14px;
-  background: rgba(231, 60, 126, 0.1);
-  padding: 5px 15px;
+  font-size: 13px;
+  background: rgba(231, 60, 126, 0.08);
+  padding: 6px 18px;
   border-radius: 20px;
 }
 
-/* 4. LOGIN PAGE (Đã gộp nút Google) */
+/* LOGIN PAGE */
 .loginPage {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70vh;
+  height: 80vh;
 }
 
 .loginCard {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(15px);
-  padding: 50px;
-  border-radius: 20px;
+  -webkit-backdrop-filter: blur(15px);
+  padding: 50px 60px;
+  border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  width: auto;
+  min-width: 450px;
+}
+
+.loginCard h1 {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.loginCard p {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.1rem;
+  padding-top: 20px;
+  margin-bottom: 40px;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
 }
 
 .login-with-google-btn {
-  margin-top: 30px;
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background-color: white;
+  background: white;
   color: #333;
-  padding: 12px 25px;
+  padding: 14px 32px;
   border-radius: 50px;
   border: none;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
   transition: 0.3s;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.login-with-google-btn img {
-  width: 20px;
-  height: 20px;
 }
 
 .login-with-google-btn:hover {
-  background-color: #f8f9fa;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* 5. CREATE POST (Đã tối ưu) */
+/* CREATE POST */
 .createPostPage {
   display: flex;
   justify-content: center;
@@ -241,43 +280,53 @@ nav button:hover {
 
 .cpContainer {
   width: 100%;
-  max-width: 600px;
+  max-width: 1000px;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(15px);
   padding: 40px;
   border-radius: 25px;
   border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.cpContainer h1 {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  color: white;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 .inputGp {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   margin-bottom: 20px;
 }
 
 .inputGp label {
+  display: block;
   color: white;
-  font-weight: 600;
   margin-bottom: 8px;
+  font-weight: 600;
 }
 
 .inputGp input,
 .inputGp textarea {
   width: 100%;
-  padding: 12px;
-  border-radius: 10px;
+  padding: 15px;
+  border-radius: 12px;
   border: none;
   background: rgba(255, 255, 255, 0.9);
+  font-family: "Lora", serif;
+}
+
+.inputGp textarea {
+  min-height: 300px;
+  resize: vertical;
   outline: none;
   transition: 0.3s;
 }
 
-.inputGp input:focus,
 .inputGp textarea:focus {
   background: white;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 15px rgba(14, 12, 12, 0.5);
 }
 
 .createPostBtn {
@@ -294,25 +343,164 @@ nav button:hover {
 
 .createPostBtn:hover {
   background: #4285f4;
-  transform: scale(1.02);
 }
 
 .postButtons {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
-
+.deleteBtn,
 .editBtn {
-  background: transparent;
+  background: none;
   border: none;
-  font-size: 18px;
   cursor: pointer;
-  opacity: 0.6;
+  font-size: 18px;
+  opacity: 0.5;
   transition: 0.3s;
 }
-
-.editBtn:hover {
-  transform: scale(1.2);
+.deleteBtn:hover {
   opacity: 1;
-  color: #4285f4; /* Màu xanh nghệ thuật */
+  color: #ff4757;
+}
+.editBtn:hover {
+  opacity: 1;
+  color: #4285f4;
+}
+
+@media (max-width: 600px) {
+  .loginCard p {
+    white-space: normal;
+  }
+  .loginCard {
+    min-width: 90%;
+    padding: 40px 20px;
+  }
+  .pageTitle {
+    font-size: 2.5rem;
+  }
+}
+
+/* NÚT ĐỌC TIẾP & QUAY LẠI */
+.readMoreBtn,
+.backBtn {
+  background: transparent;
+  color: #23a6d5;
+  border: 1px solid #23a6d5;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.readMoreBtn:hover,
+.backBtn:hover {
+  background: #23a6d5;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(35, 166, 213, 0.3);
+}
+
+.backBtn {
+  color: #e73c7e;
+  border-color: #e73c7e;
+}
+
+.backBtn:hover {
+  background: #e73c7e;
+  box-shadow: 0 4px 10px rgba(231, 60, 126, 0.3);
+}
+
+.postDetailPage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 50px 20px;
+}
+
+.postDetailContainer {
+  width: 100%;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  padding: 60px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ÉP TIÊU ĐỀ H1 PHẢI XUỐNG DÒNG VÀ FULL SIZE */
+.detailTitle {
+  font-family: "Playfair Display", serif !important;
+  font-size: 52px !important;
+  font-weight: 900 !important;
+  color: #1a1a1a !important;
+  line-height: 1.2 !important;
+
+  /* Tuyệt chiêu xuống dòng */
+  display: block !important;
+  width: 100% !important;
+  text-align: left !important;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+
+  margin-bottom: 40px !important;
+}
+
+/* ÉP NỘI DUNG VĂN BẢN */
+.detailContent {
+  width: 100% !important;
+  font-family: "Lora", serif;
+  font-size: 20px;
+  line-height: 1.8;
+  color: #333;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+}
+
+/* Responsive cho mobile: Chữ tự nhỏ lại để không bị tràn */
+@media (max-width: 768px) {
+  .postDetailContainer {
+    padding: 40px 20px;
+  }
+  .postDetailContainer h1 {
+    font-size: 36px;
+  }
+  .postDetailContainer .postTextContainer {
+    font-size: 18px;
+  }
+}
+
+.loadingContainer {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingContainer h2 {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 40px;
+  color: white;
+  opacity: 0.8;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
 }

@@ -46,50 +46,67 @@ export default function Home({ isAuth, setPostToEdit }) {
   };
 
   return (
-    <div className="homePage">
+    <div className="homePageContainer">
       <h1 className="pageTitle">Bài viết</h1>
+      <div className="homePage">
+        {/* Hiển thị khi đang tải hoặc không có bài */}
+        {postLists.length === 0 && (
+          <p className="loadingText">Đang tải những câu chuyện nghệ thuật...</p>
+        )}
 
-      {/* Hiển thị khi đang tải hoặc không có bài */}
-      {postLists.length === 0 && (
-        <p className="loadingText">Đang tải những câu chuyện nghệ thuật...</p>
-      )}
+        {/* Vòng lặp hiển thị danh sách bài viết */}
+        {postLists.map((post) => {
+          return (
+            <div key={post.id} className="post">
+              <div className="postHeader">
+                <h2>{post.title}</h2>
 
-      {/* Vòng lặp hiển thị danh sách bài viết */}
-      {postLists.map((post) => {
-        return (
-          <div key={post.id} className="post">
-            <div className="postHeader">
-              <h2>{post.title}</h2>
+                {/* Chỉ hiện nút Xóa/Sửa nếu là chủ nhân bài viết */}
+                {isAuth && post.author?.id === auth.currentUser?.uid && (
+                  <div className="postButtons">
+                    <button
+                      className="editBtn"
+                      title="Chỉnh sửa"
+                      onClick={() => editPost(post)}
+                    >
+                      ✏️
+                    </button>
+                    <button
+                      className="deleteBtn"
+                      title="Xóa bài"
+                      onClick={() => deletePost(post.id)}
+                    >
+                      🗑️
+                    </button>
+                  </div>
+                )}
+              </div>
 
-              {/* Chỉ hiện nút Xóa/Sửa nếu là chủ nhân bài viết */}
-              {isAuth && post.author?.id === auth.currentUser?.uid && (
-                <div className="postButtons">
-                  <button
-                    className="editBtn"
-                    title="Chỉnh sửa"
-                    onClick={() => editPost(post)}
-                  >
-                    ✏️
-                  </button>
-                  <button
-                    className="deleteBtn"
-                    title="Xóa bài"
-                    onClick={() => deletePost(post.id)}
-                  >
-                    🗑️
-                  </button>
-                </div>
-              )}
+              <div className="postTextContainer">
+                {post.postText.length > 150
+                  ? post.postText.substring(0, 150) + "..."
+                  : post.postText}
+              </div>
+
+              <div
+                className="postFooter"
+                style={{
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <button
+                  className="readMoreBtn"
+                  onClick={() => navigate(`/post/${post.id}`)}
+                >
+                  Đọc tiếp →
+                </button>
+                <span className="postAuthor">@{post.author.name}</span>
+              </div>
             </div>
-
-            <div className="postTextContainer">{post.postText}</div>
-
-            <div className="postFooter">
-              <div className="postAuthor">@{post.author?.name}</div>
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }

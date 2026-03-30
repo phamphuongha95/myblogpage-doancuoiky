@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import PostDetail from "./pages/PostDetail";
 import CreatePost from "./pages/CreatePost";
 import "./App.css";
 
@@ -36,6 +37,7 @@ function App() {
             />
           }
         />
+        <Route path="/post/:id" element={<PostDetail />} />
       </Routes>
     </Router>
   );
