@@ -47,7 +47,7 @@ export default function Home({ isAuth, setPostToEdit }) {
 
   return (
     <div className="homePage">
-      <h1 className="pageTitle">Các Bài Viết</h1>
+      <h1 className="pageTitle">Bài viết</h1>
 
       {/* Hiển thị khi đang tải hoặc không có bài */}
       {postLists.length === 0 && (
