@@ -25,7 +25,7 @@ export default function Home({ isAuth, setPostToEdit }) {
   // 2. Hàm Xóa bài viết
   const deletePost = async (id) => {
     const confirmDelete = window.confirm(
-      "Bro có chắc chắn muốn xóa bài này không?",
+      "Bạn có chắc chắn muốn xóa bài này không?",
     );
     if (!confirmDelete) return;
 
@@ -47,7 +47,7 @@ export default function Home({ isAuth, setPostToEdit }) {
 
   return (
     <div className="homePage">
-      <h1 className="pageTitle">Dòng Thời Gian</h1>
+      <h1 className="pageTitle">Các Bài Viết</h1>
 
       {/* Hiển thị khi đang tải hoặc không có bài */}
       {postLists.length === 0 && (
