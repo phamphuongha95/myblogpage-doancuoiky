@@ -13,7 +13,7 @@ function App() {
   const [postToEdit, setPostToEdit] = useState(null);
 
   return (
-    <Router>
+    <Router basename="/myblogpage-doancuoiky">
       <Navbar isAuth={isAuth} setIsAuth={setIsAuth} />
 
       {/* Xóa inline style padding ở đây vì CSS của mình đã lo phần này rồi bro nhé */}
