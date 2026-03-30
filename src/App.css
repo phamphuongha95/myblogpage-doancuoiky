@@ -1,0 +1,318 @@
+/* 1. RESET & NỀN (Giữ nguyên vì đã tối ưu) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #333;
+  min-height: 100vh;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 2. NAVBAR (Glassmorphism) */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10%;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: white;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+nav button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav button:hover {
+  background-color: #ff4757;
+  transform: scale(1.05);
+}
+
+/* 3. TRANG CHỦ & BÀI VIẾT */
+.homePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.pageTitle {
+  margin-bottom: 50px;
+  color: white;
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.post {
+  width: 100%;
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  margin-bottom: 40px;
+  padding: 35px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: fadeIn 0.5s ease forwards;
+  transition: 0.4s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.post:hover {
+  transform: translateY(-10px) scale(1.01);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Gộp Post Header */
+.postHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.postHeader h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+}
+
+.deleteBtn {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.deleteBtn:hover {
+  transform: scale(1.2);
+  opacity: 1;
+  color: #ff4757;
+}
+
+.postTextContainer {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #444;
+  white-space: pre-wrap;
+  margin-bottom: 25px;
+}
+
+.postFooter {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 15px;
+}
+
+.postAuthor {
+  font-weight: bold;
+  color: #e73c7e;
+  font-size: 14px;
+  background: rgba(231, 60, 126, 0.1);
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+/* 4. LOGIN PAGE (Đã gộp nút Google) */
+.loginPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.loginCard {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  padding: 50px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.login-with-google-btn {
+  margin-top: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: white;
+  color: #333;
+  padding: 12px 25px;
+  border-radius: 50px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-with-google-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.login-with-google-btn:hover {
+  background-color: #f8f9fa;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 5. CREATE POST (Đã tối ưu) */
+.createPostPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.cpContainer {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+
+.inputGp {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.inputGp label {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.inputGp input,
+.inputGp textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  outline: none;
+  transition: 0.3s;
+}
+
+.inputGp input:focus,
+.inputGp textarea:focus {
+  background: white;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.createPostBtn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 50px;
+  border: none;
+  background: #1a1a1a;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.createPostBtn:hover {
+  background: #4285f4;
+  transform: scale(1.02);
+}
+
+.postButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.editBtn {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.editBtn:hover {
+  transform: scale(1.2);
+  opacity: 1;
+  color: #4285f4; /* Màu xanh nghệ thuật */
+}
