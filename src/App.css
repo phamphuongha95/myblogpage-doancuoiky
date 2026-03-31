@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
+/* =========================================
+   1. GLOBAL STYLES & BACKGROUND
+   ========================================= */
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +16,7 @@ body {
   animation: gradientBG 15s ease infinite;
   color: #333;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 @keyframes gradientBG {
@@ -27,7 +31,9 @@ body {
   }
 }
 
-/* NAVBAR */
+/* =========================================
+   2. NAVBAR (GLASSMORPHISM)
+   ========================================= */
 nav {
   display: flex;
   justify-content: space-between;
@@ -54,7 +60,6 @@ nav a {
   text-decoration: none;
   font-weight: 600;
   transition: 0.3s;
-  position: relative;
 }
 
 nav a:hover {
@@ -77,25 +82,14 @@ nav button:hover {
   transform: scale(1.05);
 }
 
-/* HOME PAGE */
-.homePage {
+/* =========================================
+   3. HOME PAGE & MASONRY LAYOUT
+   ========================================= */
+.homePageContainer {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-
-  column-count: 3;
-  column-gap: 30px;
-}
-@media (max-width: 900px) {
-  .homePage {
-    column-count: 2;
-  }
-}
-@media (max-width: 768px) {
-  .homePage {
-    column-count: 1;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .pageTitle {
@@ -106,98 +100,79 @@ nav button:hover {
   text-align: center;
   margin: 60px 0 30px;
   letter-spacing: -1px;
-
   background: linear-gradient(to right, #ffffff 20%, #ffd1e3 50%, #d1f7ff 80%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1))
     drop-shadow(0 0 15px rgba(231, 60, 126, 0.2));
-
-  display: block;
-  width: 100%;
   transition: all 0.5s ease;
 }
 
 .pageTitle:hover {
-  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.6))
-    drop-shadow(0 0 10px rgba(35, 166, 213, 0.4));
   transform: scale(1.03) translateY(-5px);
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.6));
+}
+
+.homePage {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  column-count: 3;
+  column-gap: 30px;
 }
 
 .post {
   break-inside: avoid;
-  page-break-inside: avoid;
-  -webkit-column-break-inside: avoid;
-
   margin-bottom: 30px;
-  width: 100%;
-
   display: flex;
   flex-direction: column;
-
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 20px;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-  transition: transform 0.3s ease;
+  transition: 0.3s;
 }
 
 .post:hover {
   transform: translateY(-5px);
 }
 
+/* =========================================
+   4. POST COMPONENTS (HOME)
+   ========================================= */
 .postHeader {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 15px;
   gap: 15px;
-  width: 100%;
-}
-
-.postHeader .title {
-  flex: 1;
-  min-width: 0;
 }
 
 .postHeader h2 {
   font-family: "Playfair Display", serif;
   font-style: italic;
-  font-size: 30px;
-  font-weight: 800;
+  font-size: 28px;
   color: #1a1a1a;
-
-  white-space: normal;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
   word-break: break-word;
-  margin: 0;
 }
 
 .postTextContainer {
-  width: 100%;
   font-family: "Lora", serif;
   font-size: 15px;
   line-height: 1.6;
   color: #333;
   margin-bottom: 20px;
-  flex-grow: 1;
-
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  word-break: break-word;
   white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .postFooter {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto;
   padding-top: 15px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -206,229 +181,15 @@ nav button:hover {
   font-style: italic;
   font-weight: 600;
   color: #e73c7e;
-  font-size: 13px;
+  font-size: 12px;
   background: rgba(231, 60, 126, 0.08);
-  padding: 6px 18px;
+  padding: 4px 12px;
   border-radius: 20px;
 }
 
-/* LOGIN PAGE */
-.loginPage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
-}
-
-.loginCard {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  padding: 50px 60px;
-  border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  text-align: center;
-  max-width: 700px;
-  width: auto;
-  min-width: 450px;
-}
-
-.loginCard h1 {
-  font-family: "Playfair Display", serif;
-  font-style: italic;
-  font-size: 3rem;
-  color: white;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.loginCard p {
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 1.1rem;
-  padding-top: 20px;
-  margin-bottom: 40px;
-  white-space: nowrap;
-  letter-spacing: 0.5px;
-}
-
-.login-with-google-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: white;
-  color: #333;
-  padding: 14px 32px;
-  border-radius: 50px;
-  border: none;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.login-with-google-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* CREATE POST */
-.createPostPage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
-}
-
-.cpContainer {
-  width: 100%;
-  max-width: 1000px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(15px);
-  padding: 40px;
-  border-radius: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.cpContainer h1 {
-  font-family: "Playfair Display", serif;
-  font-style: italic;
-  color: white;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.inputGp {
-  margin-bottom: 20px;
-}
-
-.inputGp label {
-  display: block;
-  color: white;
-  margin-bottom: 8px;
-  font-weight: 600;
-}
-
-.inputGp input,
-.inputGp textarea {
-  width: 100%;
-  padding: 15px;
-  border-radius: 12px;
-  border: none;
-  background: rgba(255, 255, 255, 0.9);
-  font-family: "Lora", serif;
-}
-
-.inputGp textarea {
-  min-height: 300px;
-  resize: vertical;
-  outline: none;
-  transition: 0.3s;
-}
-
-.inputGp textarea:focus {
-  background: white;
-  box-shadow: 0 0 15px rgba(14, 12, 12, 0.5);
-}
-
-.createPostBtn {
-  width: 100%;
-  padding: 15px;
-  border-radius: 50px;
-  border: none;
-  background: #1a1a1a;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.createPostBtn:hover {
-  background: #4285f4;
-}
-
-.postButtons {
-  display: flex;
-  gap: 12px;
-}
-.deleteBtn,
-.editBtn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  opacity: 0.5;
-  transition: 0.3s;
-}
-.deleteBtn:hover {
-  opacity: 1;
-  color: #ff4757;
-}
-.editBtn:hover {
-  opacity: 1;
-  color: #4285f4;
-}
-
-@media (max-width: 600px) {
-  .loginCard p {
-    white-space: normal;
-  }
-  .loginCard {
-    min-width: 90%;
-    padding: 40px 20px;
-  }
-  .pageTitle {
-    font-size: 2.5rem;
-  }
-}
-
-/* NÚT ĐỌC TIẾP & QUAY LẠI */
-.readMoreBtn,
-.backBtn {
-  background: transparent;
-  color: #23a6d5;
-  border: 1px solid #23a6d5;
-  padding: 8px 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.readMoreBtn:hover,
-.backBtn:hover {
-  background: #23a6d5;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(35, 166, 213, 0.3);
-}
-
-.backBtn {
-  color: #e73c7e;
-  border-color: #e73c7e;
-}
-
-.backBtn:hover {
-  background: #e73c7e;
-  box-shadow: 0 4px 10px rgba(231, 60, 126, 0.3);
-}
-
-.loadingContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 50vh;
-}
-
-.loadingText {
-  font-family: "Playfair Display", serif;
-  font-style: italic;
-  font-size: 30px;
-  color: white;
-  text-align: center;
-}
-
+/* =========================================
+   5. POST DETAIL PAGE (BUNG FULL SIZE)
+   ========================================= */
 .postDetailPage {
   width: 100%;
   display: flex;
@@ -443,66 +204,108 @@ nav button:hover {
   backdrop-filter: blur(20px);
   border-radius: 30px;
   padding: 60px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
-/* ÉP TIÊU ĐỀ H1 PHẢI XUỐNG DÒNG VÀ FULL SIZE */
 .detailTitle {
   font-family: "Playfair Display", serif !important;
   font-size: 52px !important;
   font-weight: 900 !important;
+  font-style: italic !important;
   color: #1a1a1a !important;
   line-height: 1.2 !important;
-
-  /* Tuyệt chiêu xuống dòng */
   display: block !important;
   width: 100% !important;
-  text-align: left !important;
-  white-space: normal !important;
   word-wrap: break-word !important;
-  overflow-wrap: break-word !important;
-
   margin-bottom: 40px !important;
 }
 
-/* ÉP NỘI DUNG VĂN BẢN */
 .detailContent {
-  width: 100% !important;
   font-family: "Lora", serif;
   font-size: 20px;
   line-height: 1.8;
   color: #333;
   white-space: pre-wrap !important;
   word-wrap: break-word !important;
+  margin-bottom: 50px;
 }
 
-/* Responsive cho mobile: Chữ tự nhỏ lại để không bị tràn */
+/* Tút lại cái Footer trong Detail */
+.detailFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Group bên phải chứa cả Nút và Author */
+.footerRightSide {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* Khoảng cách giữa cụm nút và tên tác giả */
+}
+
+/* Style riêng cho cụm nút Sửa/Xóa trong Detail */
+.footerRightSide .postButtons {
+  display: flex;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.2); /* Tạo một lớp nền mờ nhẹ cho cụm nút */
+  padding: 5px 15px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Nâng cấp icon cho to rõ hơn */
+.editBtn,
+.deleteBtn {
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.editBtn:hover {
+  transform: scale(1.2);
+}
+.deleteBtn:hover {
+  transform: scale(1.2);
+}
+
+/* Mobile: Xếp dọc lại nếu màn hình quá nhỏ */
 @media (max-width: 768px) {
-  .postDetailContainer {
-    padding: 40px 20px;
+  .detailFooter {
+    flex-direction: column;
+    gap: 20px;
   }
-  .postDetailContainer h1 {
-    font-size: 36px;
-  }
-  .postDetailContainer .postTextContainer {
-    font-size: 18px;
+  .footerRightSide {
+    flex-direction: column;
+    gap: 15px;
   }
 }
 
+/* =========================================
+   6. LOADING STATE (CHÍNH TÂM)
+   ========================================= */
 .loadingContainer {
   width: 100%;
-  height: 80vh;
+  height: 80vh; /* Giữa màn hình */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.loadingText,
 .loadingContainer h2 {
   font-family: "Playfair Display", serif;
   font-style: italic;
   font-size: 40px;
   color: white;
-  opacity: 0.8;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
   animation: pulse 1.5s infinite;
 }
 
@@ -518,5 +321,218 @@ nav button:hover {
   100% {
     transform: scale(1);
     opacity: 0.5;
+  }
+}
+
+/* =========================================
+   7. RESPONSIVE DESIGN
+   ========================================= */
+@media (max-width: 900px) {
+  .homePage {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .homePage {
+    column-count: 1;
+  }
+  .pageTitle {
+    font-size: 45px;
+  }
+  .postDetailContainer {
+    padding: 40px 20px;
+  }
+  .detailTitle {
+    font-size: 36px !important;
+  }
+  .detailContent {
+    font-size: 18px;
+  }
+  .detailFooter {
+    flex-direction: column;
+    gap: 20px;
+  } /* Mobile thì xếp dọc lại cho đỡ chật */
+}
+
+/* LOGIN & CREATE POST (GIỮ NGUYÊN) */
+.loginPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+.loginCard {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  padding: 50px 60px;
+  border-radius: 30px;
+  text-align: center;
+  min-width: 450px;
+}
+.loginCard h1 {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.createPostPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+.cpContainer {
+  width: 100%;
+  max-width: 1000px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 25px;
+}
+
+.readMoreBtn,
+.backBtn {
+  background: transparent;
+  color: #23a6d5;
+  border: 1px solid #23a6d5;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.readMoreBtn:hover,
+.backBtn:hover {
+  background: #23a6d5;
+  color: white;
+  box-shadow: 0 4px 10px rgba(35, 166, 213, 0.3);
+}
+
+.backBtn {
+  color: #e73c7e;
+  border-color: #e73c7e;
+}
+.backBtn:hover {
+  background: #e73c7e;
+}
+
+/* =========================================
+   TRANG TẠO & CHỈNH SỬA BÀI VIẾT (XỊN)
+   ========================================= */
+.createPostPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  min-height: calc(100vh - 80px); /* Trừ đi chiều cao Navbar */
+}
+
+.cpContainer {
+  width: 100%;
+  max-width: 900px; /* Độ rộng chuẩn để tập trung viết lách */
+  background: rgba(255, 255, 255, 0.15); /* Kính mờ siêu mỏng */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 60px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease;
+}
+
+.cpContainer h1 {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 45px;
+  font-weight: 900;
+  color: white;
+  text-align: center;
+  margin-bottom: 40px;
+  text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.inputGp {
+  margin-bottom: 30px;
+}
+
+.inputGp label {
+  display: block;
+  color: white;
+  margin-bottom: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+/* Ô NHẬP LIỆU PHONG CÁCH KÍNH */
+.inputGp input,
+.inputGp textarea {
+  width: 100%;
+  padding: 18px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Trắng gần như tuyệt đối để dễ đọc chữ */
+  font-family: "Lora", serif;
+  font-size: 17px;
+  color: #1a1a1a;
+  outline: none;
+  transition: 0.4s all ease;
+}
+
+.inputGp textarea {
+  min-height: 350px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* HIỆU ỨNG KHI CLICK VÀO Ô NHẬP */
+.inputGp input:focus,
+.inputGp textarea:focus {
+  background: white;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* NÚT "ĐĂNG BÀI" HOẶC "CẬP NHẬT" */
+.createPostBtn {
+  width: 100%;
+  padding: 18px;
+  border-radius: 50px;
+  border: none;
+  background: #1a1a1a; /* Màu đen sang trọng */
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.createPostBtn:hover {
+  background: #23a6d5; /* Đổi sang màu xanh khi hover cho art */
+  transform: scale(1.02);
+  box-shadow: 0 15px 30px rgba(35, 166, 213, 0.4);
+}
+
+/* Responsive nhỏ cho mobile */
+@media (max-width: 600px) {
+  .cpContainer {
+    padding: 30px 20px;
+  }
+  .cpContainer h1 {
+    font-size: 30px;
   }
 }

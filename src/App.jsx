@@ -37,7 +37,10 @@ function App() {
             />
           }
         />
-        <Route path="/post/:id" element={<PostDetail />} />
+        <Route
+          path="/post/:id"
+          element={<PostDetail isAuth={isAuth} setPostToEdit={setPostToEdit} />}
+        />
       </Routes>
     </Router>
   );
