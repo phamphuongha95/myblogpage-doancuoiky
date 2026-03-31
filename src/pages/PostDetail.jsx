@@ -57,7 +57,31 @@ function PostDetail({ isAuth, setPostToEdit }) {
   return (
     <div className="postDetailPage">
       <div className="postDetailContainer">
-        <h1 className="detailTitle">{post?.title}</h1>
+        <div className="postHeader">
+          <h1 className="detailTitle">{post?.title}</h1>
+
+          {isAuth && post?.author?.id === auth.currentUser?.uid && (
+            <div className="postButtons">
+              <button
+                className="editBtn"
+                title="Chỉnh sửa"
+                onClick={() => {
+                  setPostToEdit(post);
+                  navigate("/create");
+                }}
+              >
+                ✏️
+              </button>
+              <button
+                className="deleteBtn"
+                title="Xóa bài"
+                onClick={deletePost}
+              >
+                🗑️
+              </button>
+            </div>
+          )}
+        </div>
 
         <div className="detailContent">{post?.postText}</div>
 
@@ -67,27 +91,6 @@ function PostDetail({ isAuth, setPostToEdit }) {
           </button>
 
           <div className="footerRightSide">
-            {isAuth && post?.author?.id === auth.currentUser?.uid && (
-              <div className="postButtons">
-                <button
-                  className="editBtn"
-                  title="Chỉnh sửa"
-                  onClick={() => {
-                    setPostToEdit(post);
-                    navigate("/create");
-                  }}
-                >
-                  ✏️
-                </button>
-                <button
-                  className="deleteBtn"
-                  title="Xóa bài"
-                  onClick={deletePost}
-                >
-                  🗑️
-                </button>
-              </div>
-            )}
             <span className="postAuthor">@{post?.author?.name}</span>
           </div>
         </div>

@@ -370,7 +370,7 @@ nav button:hover {
   text-align: center;
   min-width: 450px;
 }
-.loginCard h1 {
+.loginCard h2 {
   font-family: "Playfair Display", serif;
   font-style: italic;
   font-size: 3rem;
@@ -535,4 +535,49 @@ nav button:hover {
   .cpContainer h1 {
     font-size: 30px;
   }
+}
+
+/* =========================================
+   8. LOGIN WITH GOOGLE BUTTON
+   ========================================= */
+.login-with-google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; /* Khoảng cách giữa icon Google và chữ */
+  width: 100%;
+  max-width: 320px; /* Chiều rộng vừa vặn, không bị bè quá mức */
+  margin: 30px auto 0; /* Căn giữa trong thẻ loginCard */
+  padding: 15px 25px;
+  background-color: #ffffff; /* Nền trắng để tạo độ tương phản tốt với background kính */
+  color: #1a1a1a;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: 50px; /* Bo góc tròn đồng bộ với toàn bộ giao diện */
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Đổ bóng nhẹ tạo chiều sâu */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Hiệu ứng nảy mượt y hệt nút Đăng Bài */
+}
+
+/* Kích thước chuẩn cho Icon Google (nếu bạn dùng thẻ img bên trong) */
+.login-with-google-btn img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Hiệu ứng khi di chuột vào */
+.login-with-google-btn:hover {
+  transform: translateY(-3px) scale(1.02); /* Phóng to và nổi lên một chút */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  color: #23a6d5; /* Chữ đổi sang tone xanh dương để tone-sur-tone với gradient */
+  border: 1px solid rgba(35, 166, 213, 0.3); /* Viền sáng màu xanh dương */
+}
+
+/* Hiệu ứng khi bấm click chuột */
+.login-with-google-btn:active {
+  transform: translateY(0) scale(0.98); /* Lún xuống tự nhiên */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
